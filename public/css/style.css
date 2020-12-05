@@ -1,0 +1,79 @@
+*,*::before, *::after {
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0;
+}
+
+.logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.form-signin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+article {
+    margin-top: 15px;
+}
+
+article:last-child {
+    margin-bottom: 50px;
+}
+
+.w-img {
+    min-width: 495px;
+    max-height: 270px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.img-None {
+    min-width: 495px;
+    min-height: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+}
+
+.article-aside {
+    list-style: none;
+    font-size: 25px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-top: 14px;
+}
+
+.main-nav li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    vertical-align: middle;
+}
+
+
+.profile-img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+}

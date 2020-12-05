@@ -1,0 +1,10 @@
+article:
+    index:
+        btn:
+            show: Voir l'article
+    
+    show:
+        btn:
+            edit: Modifier
+            delete: Supprimer
+            back: Retour

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	{{ article.title > 20 ? article.title|slice(0, 20)~'...' : article.title }}
+{% endblock %}
+
+{% block body %}
+
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{{path('global')}}">Home</a>
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">{{ article.title }}</li>
+		</ol>
+	</nav>
+
+	<img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{article.image}}" class="img-fluid rounded" style="width: 100%;height: 300px;object-fit: cover;object-position: top;">
+
+	<div class="row" style="max-width: 950px;width: 100%;margin: 60px auto;">
+		<aside class="col-md-2">
+			<ul class="article-aside" style="list-style: none;font-size: 35px;">
+				<li>
+					<i class="fab fa-facebook"></i>
+				</li>
+				<li>
+					<i class="fab fa-twitter"></i>
+				</li>
+			</ul>
+		</aside>
+		<div class="col-md-10">
+			<div class="row pl-3 text-right">
+				<a href="{{ path('global') }}" class="btn btn-primary mb-3 mr-2">{{'article.show.btn.back'| trans}}</a>
+				{% if is_granted('POST_EDIT', article) %}
+					<a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-primary mb-3 mr-2">{{'article.show.btn.edit'| trans}}</a>
+					{{ include('article/_delete_form.html.twig') }}
+				{% endif %}
+			</div>
+			<h1 class="text-primary">{{ article.title }}</h1>
+			<h2 style="opacity: .3;font-size: 17px;margin: 20px 0;">{{ article.summary }}</h2>
+			<p class="text-justify">{{ article.content }}</p>
+		</div>
+	</div>
+
+
+{% endblock %}

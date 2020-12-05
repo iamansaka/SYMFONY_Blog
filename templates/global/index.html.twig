@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} Accueil{% endblock %}
+
+{% block body %}
+
+{% for label, messages in app.flashes() %}
+    {% for message in messages %}
+        <div class="alert alert-{{label}} mt-3" role="alert">
+            {{message}}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<div class="top mt-5">
+    <h1>Lorem ipsum dolor sit amet</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus esse voluptate itaque hic odio alias ducimus nesciunt aut tenetur autem, a quia eveniet obcaecati sint fugiat aperiam iure. Obcaecati, non.</p>
+</div>
+
+{% for article in articles %}
+    <article class="d-flex">
+        {% if article.image %}
+            <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{article.image}}" class="img-fluid w-img">
+        {% else %}
+            <div class="img-None w-img">Aucune image</div>
+        {% endif %}
+        <div>
+            <h2><a href="{{path('article_show', {'id' : article.id })}}">{{article.title}}</a></h2>
+            <p>{{ article.content|length > 400 ? article.content|slice(0, 400)~'...' : article.content }}</p>
+            <p class="text-dark-50">{{article.summary}}</p>
+            <p class="text-right">
+                <a href="{{path('article_show', {'id' : article.id })}}" class="btn btn-primary">{{'article.index.btn.show'| trans}}</a>
+            </p>
+        </div>
+    </article>
+{% else %}
+    <div class="alert alert-danger" role="alert">
+        Aucun article pour le môment
+    </div>
+{% endfor %}
+
+{# display navigation #}
+<div class="navigation mt-3 mb-5">
+    {{ knp_pagination_render(articles) }}
+</div>
+
+{% endblock %}

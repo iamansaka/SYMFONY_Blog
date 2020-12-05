@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Modification du profil{% endblock %}
+
+{% block body %}
+    {% for label, messages in app.flashes() %}
+        {% for message in messages %}
+            <div class="alert alert-{{label}} mt-3" role="alert">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    
+    {{form_start(form_edit)}}
+    {{form_widget(form_edit)}}
+    <input type="submit" class="btn btn-success" value="Modifier" />
+    {{form_end(form_edit)}}
+{% endblock %}
