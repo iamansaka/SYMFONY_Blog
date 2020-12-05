@@ -57,10 +57,6 @@ class ArticleController extends AbstractController
         return $this->render('article/article.html.twig', [
             'article' => $article,
         ]);
-
-        // return $this->render('article/show.html.twig', [
-        //     'article' => $article,
-        // ]);
     }
 
     /**
